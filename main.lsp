@@ -1,6 +1,6 @@
-(setq *counter* 0)
+п»ї(setq *counter* 0)
 
-; получаем дескриптор файла
+; РїРѕР»СѓС‡Р°РµРј РґРµСЃРєСЂРёРїС‚РѕСЂ С„Р°Р№Р»Р°
 (setq fo (open "D:/yura/Documents/LISP/Projects/sortsrc/test.lsp"
 			   "r"
 		 )
@@ -17,7 +17,7 @@
 	(write-line str f)
 )
 
-; является ли символ скобкой
+; СЏРІР»СЏРµС‚СЃСЏ Р»Рё СЃРёРјРІРѕР» СЃРєРѕР±РєРѕР№
 (defun brackets (symbol)
 	(if (or (= symbol "(") (= symbol ")"))
 		t
@@ -25,7 +25,7 @@
 	)
 )
 
-; преобразование подстроки в список
+; РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РїРѕРґСЃС‚СЂРѕРєРё РІ СЃРїРёСЃРѕРє
 (defun substr->list	(str / s)
 	(setq s (read (strcat "(" str ")")))
 	s
@@ -34,8 +34,8 @@
 
 
 
-; обработка построчно текста из файла
-; и преобразование его в список
+; РѕР±СЂР°Р±РѕС‚РєР° РїРѕСЃС‚СЂРѕС‡РЅРѕ С‚РµРєСЃС‚Р° РёР· С„Р°Р№Р»Р°
+; Рё РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РµРіРѕ РІ СЃРїРёСЃРѕРє
 (defun str->list (str		 /			current-line-pos		   
 				  l			 word		symbol	   quotes-counter
 				  flag-quotes flag-slash
@@ -47,12 +47,12 @@
 	(setq flag-quotes nil)
 	(setq flag-slash nil)
 
-	; Пока есть строки в файле, читаем их
+	; РџРѕРєР° РµСЃС‚СЊ СЃС‚СЂРѕРєРё РІ С„Р°Р№Р»Рµ, С‡РёС‚Р°РµРј РёС…
 	(while (/= (substr str current-line-pos	1) "")
 		(setq symbol (substr str current-line-pos 1))
 	
 
-		; обработка кавычек
+		; РѕР±СЂР°Р±РѕС‚РєР° РєР°РІС‹С‡РµРє
 		(if	(= symbol "\"")
 			(if (and (= flag-quotes t) (= flag-slash nil))
 				(progn
@@ -62,7 +62,7 @@
 					(setq word "")
 					(setq symbol " ")
 
-					; обнуляем, чтобы снова не заходить в условие
+					; РѕР±РЅСѓР»СЏРµРј, С‡С‚РѕР±С‹ СЃРЅРѕРІР° РЅРµ Р·Р°С…РѕРґРёС‚СЊ РІ СѓСЃР»РѕРІРёРµ
 					(setq flag-quotes nil)
 					(setq flag-slash nil)
 				 )
@@ -119,7 +119,7 @@
 )
 
 
-; подсчет слов
+; РїРѕРґСЃС‡РµС‚ СЃР»РѕРІ
 (defun words-counter (fo counter / line)
 	(setq line " ")
 	(while (setq line (read-line fo))
